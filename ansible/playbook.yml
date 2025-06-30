@@ -1,0 +1,13 @@
+- hosts: localhost
+  tasks:
+    - name: Configure network interface
+      community.network.nios_network:
+        provider:
+          host: "{{ ansible_host }}"
+          username: "{{ ansible_user }}"
+          password: "{{ ansible_password }}"
+        configure:
+          - name: "eth0"
+            state: "present"
+            ip4: "192.168.1.100"
+            mask: "255.255.255.0"
